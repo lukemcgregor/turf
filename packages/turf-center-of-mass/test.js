@@ -78,3 +78,11 @@ test('center of mass -- properties', t => {
     t.equal(pt.properties.foo, 'bar', 'translate properties');
     t.end();
 });
+
+
+test('center of mass -- antemeridian', t => {
+    const line = lineString([[179, 0], [-177, 0]]);
+    const pt = centerOfMass(line);
+    t.deepEqual(pt, point([-179, 0]), 'point returns closest center of mass');
+    t.end();
+});
